@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 namespace Full_GRASP_And_SOLID
 {
-    public class Recipe
+    public class Recipe : IRecipeContent
     {
         // Cambiado por OCP
-        private IList<BaseStep> steps = new List<BaseStep>();
+        private IList<Step> steps = new List<Step>();
 
         public Product FinalProduct { get; set; }
 
@@ -24,7 +24,7 @@ namespace Full_GRASP_And_SOLID
         }
 
         // Agregado por OCP y Creator
-        public void AddStep(string description, int time)
+        public Step AddStep(string description, int time)
         {
             WaitStep step = new WaitStep(description, time);
             this.steps.Add(step);
